@@ -12,6 +12,14 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 
+  const demoAccounts = [
+    { label: '🎓 Aryan (Student)', email: 'aryan@student.com', password: 'password123' },
+    { label: '🎓 Rohan (Student)', email: 'rohan@student.com', password: 'password123' },
+    { label: '🏢 Priya (Business)', email: 'priya@test.com', password: 'password123' },
+    { label: '🏢 Café Aroma', email: 'priya@cafearoma.in', password: 'password123' },
+    { label: '🏢 TechSpark', email: 'admin@techspark.io', password: 'password123' },
+  ]
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
@@ -122,13 +130,25 @@ export default function LoginPage() {
           </p>
         </div>
 
-        {/* Demo credentials */}
-        <div style={{ marginTop: 20, padding: '14px 18px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, backdropFilter: 'blur(10px)' }}>
-          <p style={{ fontSize: 11, color: 'rgba(245,243,238,0.35)', margin: 0, textAlign: 'center', lineHeight: 1.7 }}>
-            🎓 <strong style={{ color: 'rgba(245,243,238,0.5)' }}>Student:</strong> priya@test.com / password123
-            <br />
-            🏢 <strong style={{ color: 'rgba(245,243,238,0.5)' }}>Business:</strong> cafe@test.com / password123
-          </p>
+        {/* Demo credentials — clickable */}
+        <div style={{ marginTop: 20, padding: '16px 18px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, backdropFilter: 'blur(10px)' }}>
+          <p style={{ fontSize: 11, color: 'rgba(245,243,238,0.4)', margin: '0 0 10px', textAlign: 'center', letterSpacing: '0.05em', textTransform: 'uppercase' }}>🔑 Demo Accounts — Click to fill</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            {demoAccounts.map(acc => (
+              <button
+                key={acc.email}
+                type="button"
+                onClick={() => { setEmail(acc.email); setPassword(acc.password); setError('') }}
+                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '7px 12px', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s' }}
+                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(240,192,64,0.12)')}
+                onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.05)')}
+              >
+                <span style={{ fontSize: 12, color: 'rgba(245,243,238,0.7)', fontWeight: 500 }}>{acc.label}</span>
+                <span style={{ fontSize: 11, color: 'rgba(245,243,238,0.35)', marginLeft: 8 }}>{acc.email}</span>
+              </button>
+            ))}
+          </div>
+          <p style={{ fontSize: 10, color: 'rgba(245,243,238,0.25)', margin: '10px 0 0', textAlign: 'center' }}>Password for all: password123</p>
         </div>
       </div>
 
