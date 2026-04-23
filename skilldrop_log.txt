@@ -1,0 +1,13 @@
+
+> skilldrop-app@0.1.0 dev
+> next dev
+
+  ▲ Next.js 13.5.6
+  - Local:        http://localhost:3000
+  - Environments: .env
+
+ ✓ Ready in 6.5s
+ ✓ Compiled /page in 1497ms (596 modules)
+ ✓ Compiled /api/auth/[...nextauth]/route in 817ms (544 modules)
+ ✓ Compiled /signup/page in 1919ms (856 modules)
+^C^C
